@@ -61,10 +61,3 @@ rp.plot.show()
 # rp.plot.spectra(c, data.spectral_axis, plot_type="single stacked", title='Decompose')
 # rp.plot.show()
 
-#TODO save out data to .mat file
-#with open("sarahprocessed.mat", "w") as f:
-# the write file needs a string and data is a spectrum object
-# the created spectrum object from rp.load.witec seems logic heavy
-# I don't think there's a reverse option that lets me convert spectrum object back to string file
-#    f.write(data)
-
