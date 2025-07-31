@@ -8,7 +8,8 @@ class TestBaselineASPLS(unittest.TestCase):
 
     @patch('ramanspy.load.witec')
     @patch('ramanspy.preprocessing.Pipeline.apply')
-    def test_success(self, mock_load,  mock_pipeline_apply):
+    @patch('matplotlib.pyplot')
+    def test_success(self, mock_load,  mock_pipeline_apply, mock_thing):
         test_cases = [
         ({'file_name': './TestSpectra.mat'}),
         ({'file_name': './TestImage.mat'})
@@ -25,6 +26,6 @@ class TestBaselineASPLS(unittest.TestCase):
             # assert pipeline apply is called
             assert mock_pipeline_apply.called
             # need to work a close window call into the show mock or the test will hang
-
+            assert mock_thing.called
 if __name__ == '__main__':
     unittest.main()

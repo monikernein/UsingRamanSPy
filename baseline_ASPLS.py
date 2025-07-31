@@ -7,6 +7,7 @@ class BaselineASPLS:
         # Validate and process arguments
         self.parse_args(mode, test_param)
         self.file_name = self.get_file_name() 
+        self.mode = mode
 
     def parse_args(self, mode, test_param):
         if mode == 'unittest':
@@ -48,7 +49,18 @@ class BaselineASPLS:
         # Make a popup happen that shows the original and the processed graphs
         # rp.plot is basically an image object so once you set things like spectra you'll get something out of show()
         rp.plot.spectra([raman_spectrum, data], label=["original","processed"], title='Useful Preprocessing Comparison', plot_type="stacked")
-        rp.plot.show()
+        # rp.plot.show()
+        # rp.plot.savefig() gonna be what I want for future work
+        # if in unit test wait 5 seconds and close the show window
+        if self.mode == 'unittest':
+            # do things
+            rp.plot.show(block=False)
+            rp.plot.pause(10)
+            rp.plot.close()
+        else:
+            rp.plot.show(block=False)
+            rp.plot.pause(5)
+            rp.plot.close()
 
 if __name__ == '__main__':
      processor = BaselineASPLS()
